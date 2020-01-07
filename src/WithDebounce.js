@@ -1,14 +1,14 @@
 import React, { useState, useRef } from "react";
-import { throttle } from "lodash";
+import { debounce } from "lodash";
 
 export default function WithDebounce() {
   const [text, setText] = useState("");
 
   const delayedQuery = useRef(
-    throttle(e => {
+    debounce(e => {
       setText(e);
       console.log("#COM DEBOUNCE: " + e);
-    }, 5000)
+    }, 500)
   ).current;
 
   function handleChange(e) {
